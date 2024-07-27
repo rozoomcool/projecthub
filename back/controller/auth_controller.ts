@@ -35,6 +35,7 @@ authRouter.post('/login', async (req, res) => {
             refresh
         });
     } catch (error) {
+        console.log(error)
         if (error instanceof Error) {
             res.status(400).json({ error: error.message });
         } else {

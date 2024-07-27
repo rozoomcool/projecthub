@@ -57,20 +57,19 @@ class UserService {
         return await this.prisma.user.findMany();
     }
     
-    async updateUserAvatar(params: UpdateUserParams): Promise<User> {
-        const { id, avatarUrl } = params;
-        const user = await this.prisma.user.findUnique({ where: { id } });
+    // async updateUserAvatar(params: UpdateUserParams): Promise<User> {
+    //     const { id, avatarUrl } = params;
+    //     const user = await this.prisma.user.findUnique({ where: { id } });
     
-        if (user && avatarUrl && user.avatarUrl) {
-          // Удаляем старый аватар
-          const oldAvatarPath = path.join(__dirname, '../../', user.avatarUrl);
-          fs.unlink(oldAvatarPath, (err) => {
-            if (err) {
-              console.error(`Failed to delete old avatar: ${err.message}`);
-            }
-          });
-        }
-    }
+    //     if (user && avatarUrl && user.avatarUrl) {
+    //       const oldAvatarPath = path.join(__dirname, '../../', user.avatarUrl);
+    //       fs.unlink(oldAvatarPath, (err) => {
+    //         if (err) {
+    //           console.error(`Failed to delete old avatar: ${err.message}`);
+    //         }
+    //       });
+    //     }
+    // }
 }
 
 export const userService = new UserService(prisma);
