@@ -7,6 +7,13 @@ export interface Project {
     createdAt: Date;
 }
 
+export interface ProjectCreate {
+    name: string;
+    description: string;
+    status: ProjectStatus;
+    readme: string
+}
+
 export enum ProjectStatus {
     NEW,
     ONGOING,

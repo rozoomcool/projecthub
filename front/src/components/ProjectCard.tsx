@@ -6,10 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Project } from "../models/Project";
 
-interface PostCardProps {
-  project: Project;
-}
-
 const PostCard: React.FC<Project> = (project: Project) => {
   return (
     <Card sx={{ maxWidth: 345, margin: 2 }}>

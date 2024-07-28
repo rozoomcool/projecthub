@@ -39,7 +39,7 @@ const router = createBrowserRouter([
     element: <RegistrationScreen />
   },
   {
-    path: "/profile",
+    path: "/profile/:userId",
     element: <UserProfileScreen userId={1} />
   }
 ]);

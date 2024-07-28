@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 import { Project, ProjectStatus } from "../models/Project";
 import PostCard from "./ProjectCard";
+import ProjectService from "../http/ProjectService";
 
 const PostGrid: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
@@ -14,8 +14,8 @@ const PostGrid: React.FC = () => {
     useEffect(() => {
       const fetchPosts = async () => {
         try {
-          const response = await axios.get<Project[]>('http://localhost:3000/api/v1/projects'); // Замените на URL вашего API
-          setProjects(response.data);
+          const projects = await ProjectService.getProjects();
+          setProjects(projects ?? []);
           setLoading(false);
         } catch (error) {
           console.error('Error fetching posts:', error);
