@@ -34,7 +34,7 @@ export const setupSocket = (io: Server) => {
                 content: messageRequest.content
             })
             
-            if (targetSocket) {
+            if (targetSocket?.connected) {
                 const delivered = targetSocket.emit('private_message', message);
                 if (delivered){
                     authSocket.emit('message_delivered', {messageId: message.id, status: MessageStatus.DELIVERED});
